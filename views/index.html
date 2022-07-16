@@ -1,0 +1,214 @@
+<!doctype html>
+<html>
+    <head>
+        <title><%= title %></title>
+        <style>
+            #welcome, #description {
+                max-width: 1000px;
+            }
+            input[type=text], select {
+                width: 100%;
+                padding: 12px 20px;
+                margin: 8px 0;
+                display: inline-block;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+            }
+            input[type=number], select {
+                width: 100%;
+                padding: 12px 20px;
+                margin: 8px 0;
+                display: inline-block;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+            }
+            input[type=submit] {
+                width: 100%;
+                background-color: #ff4a4a;
+                color: white;
+                padding: 14px 20px;
+                margin: 8px 0;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+            input[type=submit]:hover {
+                background-color: #ff1919;
+            }
+            form {
+                max-width: 400px;
+                border-radius: 5px;
+                background-color: #e9e9e9;
+                padding-left: 20px;
+                padding-bottom: 20px;
+                padding-right: 20px;
+                padding-top: 1px;
+                margin: 20px;
+            }
+            .center {
+                margin: auto;
+                width: 50%;
+            }
+            a {
+                color: black;
+                text-decoration: none;
+            }
+            a:hover {
+                color: #ff4a4a;
+            }
+            .column {
+                float: left;
+                width: 33.33%;
+            }
+            .row:after {
+                content: "";
+                display: table;
+                clear: both;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="welcome" class="center" style="text-align: center;">
+            <h1><a href="/"><%= title %></a></h1>
+        </div>
+        <div id="description" class="center" style="text-align: center;">
+            <h4>
+                Looking for a flat to buy but not sure what the prices are in certain areas? This site is perfect
+                for you! Done up by Alysa Nadya Binte Mohamed Yusoff UOL ID 200553087
+            </h4>
+        </div>
+        <div class="row">
+            <div id="formAverage" class="column">
+                <form action="/average" method="get">
+                    <h3>Find out the average resale price each month for a specific area</h3>
+                    <!-- <label for="town">Area (Choose between ANG MO KIO, BEDOK, BISHAN, BUKIT BATOK, BUKIT MERAH, BUKIT PANJANG, BUKIT TIMAH,
+                        CENTRAL AREA, CHOA CHU KANG, CLEMENTI,
+                        GEYLANG, HOUGANG, JURONG EAST, JURONG WEST, KALLANG/WHAMPOA, MARINE PARADE, PASIR RIS, PUNGGOL, QUEENSTOWN,
+                        SEMBAWANG,
+                        SENGKANG, SERANGOON, TAMPINES, TOA PAYOH, WOODLANDS, YISHUN)</label>
+                    <input name="town" type="text" placeholder="E.g. ANG MO KIO" /> -->
+                    <label for="town">Area</label>
+                    <select name="town">
+                        <!-- <option value="none" selected disabled hidden>Select</option> -->
+                        <option value="ANG MO KIO" selected>ANG MO KIO</option>
+                        <option value="BEDOK">BEDOK</option>
+                        <option value="BISHAN">BISHAN</option>
+                        <option value="BUKIT BATOK">BUKIT BATOK</option>
+                        <option value="BUKIT MERAH">BUKIT MERAH</option>
+                        <option value="BUKIT PANJANG">BUKIT PANJANG</option>
+                        <option value="BUKIT TIMAH">BUKIT TIMAH</option>
+                        <option value="CENTRAL AREA">CENTRAL AREA</option>
+                        <option value="CHOA CHU KANG">CHOA CHU KANG</option>
+                        <option value="CLEMENTI">CLEMENTI</option>
+                        <option value="GEYLANG">GEYLANG</option>
+                        <option value="HOUGANG">HOUGANG</option>
+                        <option value="JURONG EAST">JURONG EAST</option>
+                        <option value="JURONG WEST">JURONG WEST</option>
+                        <option value="KALLANG/WHAMPOA">KALLANG/WHAMPOA</option>
+                        <option value="MARINE PARADE">MARINE PARADE</option>
+                        <option value="PASIR RIS">PASIR RIS</option>
+                        <option value="PUNGGOL">PUNGGOL</option>
+                        <option value="QUEENSTOWN">QUEENSTOWN</option>
+                        <option value="SEMBAWANG">SEMBAWANG</option>
+                        <option value="SENGKANG">SENGKANG</option>
+                        <option value="SERANGOON">SERANGOON</option>
+                        <option value="TAMPINES">TAMPINES</option>
+                        <option value="TOA PAYOH">TOA PAYOH</option>
+                        <option value="WOODLANDS">WOODLANDS</option>
+                        <option value="YISHUN">YISHUN</option>
+                    </select>
+                    <input type="submit" />
+                </form>
+            </div>
+            <div id="formBudget" class="column">
+                <form action="/budget" method="get">
+                    <h3>Looking for resale flats to fit your budget?</h3>
+                    <label for="budgetMin">Minimum Budget (SGD)</label>
+                    <input name="budgetMin" type="number" min="140000" max="1257999" placeholder="E.g. 140000"/>
+                    <label for="budgetMax">Maximum Budget (SGD)</label>
+                    <input name="budgetMax" type="number" min="140001" max="1258000" placeholder="E.g. 1258000"/>
+                    <label for="order">Sort By</label>
+                    <select name="order">
+                        <option value="asc" selected>ASCENDING</option>
+                        <option value="desc">DESCENDING</option>
+                    </select>
+                    <label for="limit">Limit</label>
+                    <select name="limit">
+                        <option value="20" selected>20</option>
+                        <option value="50">50</option>
+                        <option value="50">100</option>
+                        <option value="50">150</option>
+                        <option value="">All</option>
+                    </select>
+                    <input type="submit" />
+                </form>
+            </div>
+            <div id="formCompare" class="column">
+                <form action="/compare" method="get">
+                    <h3>Compare the statistics of two different areas</h3>
+                    <label for="town1">Area</label>
+                    <select name="town1">
+                        <option value="ANG MO KIO" selected>ANG MO KIO</option>
+                        <option value="BEDOK">BEDOK</option>
+                        <option value="BISHAN">BISHAN</option>
+                        <option value="BUKIT BATOK">BUKIT BATOK</option>
+                        <option value="BUKIT MERAH">BUKIT MERAH</option>
+                        <option value="BUKIT PANJANG">BUKIT PANJANG</option>
+                        <option value="BUKIT TIMAH">BUKIT TIMAH</option>
+                        <option value="CENTRAL AREA">CENTRAL AREA</option>
+                        <option value="CHOA CHU KANG">CHOA CHU KANG</option>
+                        <option value="CLEMENTI">CLEMENTI</option>
+                        <option value="GEYLANG">GEYLANG</option>
+                        <option value="HOUGANG">HOUGANG</option>
+                        <option value="JURONG EAST">JURONG EAST</option>
+                        <option value="JURONG WEST">JURONG WEST</option>
+                        <option value="KALLANG/WHAMPOA">KALLANG/WHAMPOA</option>
+                        <option value="MARINE PARADE">MARINE PARADE</option>
+                        <option value="PASIR RIS">PASIR RIS</option>
+                        <option value="PUNGGOL">PUNGGOL</option>
+                        <option value="QUEENSTOWN">QUEENSTOWN</option>
+                        <option value="SEMBAWANG">SEMBAWANG</option>
+                        <option value="SENGKANG">SENGKANG</option>
+                        <option value="SERANGOON">SERANGOON</option>
+                        <option value="TAMPINES">TAMPINES</option>
+                        <option value="TOA PAYOH">TOA PAYOH</option>
+                        <option value="WOODLANDS">WOODLANDS</option>
+                        <option value="YISHUN">YISHUN</option>
+                    </select>
+                    <label for="town2">Area</label>
+                    <select name="town2" required>
+                        <option value="ANG MO KIO">ANG MO KIO</option>
+                        <option value="BEDOK" selected>BEDOK</option>
+                        <option value="BISHAN">BISHAN</option>
+                        <option value="BUKIT BATOK">BUKIT BATOK</option>
+                        <option value="BUKIT MERAH">BUKIT MERAH</option>
+                        <option value="BUKIT PANJANG">BUKIT PANJANG</option>
+                        <option value="BUKIT TIMAH">BUKIT TIMAH</option>
+                        <option value="CENTRAL AREA">CENTRAL AREA</option>
+                        <option value="CHOA CHU KANG">CHOA CHU KANG</option>
+                        <option value="CLEMENTI">CLEMENTI</option>
+                        <option value="GEYLANG">GEYLANG</option>
+                        <option value="HOUGANG">HOUGANG</option>
+                        <option value="JURONG EAST">JURONG EAST</option>
+                        <option value="JURONG WEST">JURONG WEST</option>
+                        <option value="KALLANG/WHAMPOA">KALLANG/WHAMPOA</option>
+                        <option value="MARINE PARADE">MARINE PARADE</option>
+                        <option value="PASIR RIS">PASIR RIS</option>
+                        <option value="PUNGGOL">PUNGGOL</option>
+                        <option value="QUEENSTOWN">QUEENSTOWN</option>
+                        <option value="SEMBAWANG">SEMBAWANG</option>
+                        <option value="SENGKANG">SENGKANG</option>
+                        <option value="SERANGOON">SERANGOON</option>
+                        <option value="TAMPINES">TAMPINES</option>
+                        <option value="TOA PAYOH">TOA PAYOH</option>
+                        <option value="WOODLANDS">WOODLANDS</option>
+                        <option value="YISHUN">YISHUN</option>
+                    </select>
+                    <input type="submit" />
+                </form>
+            </div>
+        </div>
+    </body>
+</html>

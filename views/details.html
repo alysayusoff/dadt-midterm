@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Resale Flat Prices in Singapore</title>
+        <style>
+            #welcome, #description {
+                max-width: 1000px;
+            }
+            #link {
+                text-decoration: none;
+                text-decoration-color: black;
+            }
+            #filter-container {
+                text-align: center;
+            }
+            #table-container {
+                text-align: center;
+            }
+            .styled-table {
+                border-collapse: collapse;
+                margin: 25px 0;
+                font-size: 0.9em;
+                font-family: sans-serif;
+                min-width: 400px;
+                box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+            }
+            .styled-table thead tr {
+                background-color: #ff4a4a;
+                color: #ffffff;
+            }
+            .styled-table th, .styled-table td {
+                padding: 12px 15px;
+            }
+            .styled-table tbody tr {
+                border-bottom: 1px solid #dddddd;
+            }
+
+            .styled-table tbody tr:nth-of-type(even) {
+                background-color: #f3f3f3;
+            }
+
+            .styled-table tbody tr:last-of-type {
+                border-bottom: 2px solid #ff4a4a;
+            }
+            .styled-table tbody tr:hover {
+                color: #ff4a4a;
+            }
+            .labelClass {
+                margin: 10px;
+            }
+            .button {
+                background: none;
+                color: inherit;
+                border: none;
+                padding: 0;
+                font: inherit;
+                cursor: pointer;
+                outline: inherit;
+                text-decoration: underline;
+            }
+        </style>
+    </head>
+    <body>
+        <center>
+            <div id="welcome">
+                <h1><a id="link" href="/"><%= title %></a></h1>
+            </div>
+        </center>
+        <div id="table-container">
+            <center>
+                <table class="styled-table">
+                    <thead>
+                        <tr>
+                            <th>Address</th>
+                            <th>Square Feet</th>
+                            <th>Type & Model</th>
+                            <th>Resale Price</th>
+                            <th>Lease Commencement Date</th>
+                            <th>Remaining Lease</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% result.forEach(function(result){ %>
+                        <tr>
+                            <td><%= result.block %> <%= result.street_name %>, <%= result.town_name %></td>
+                            <td style="text-align: center;"><%= result.floor_area_sqm %></td>
+                            <td><%= result.flat_type %>, <%= result.flat_model %></td>
+                            <td style="text-align: center;">SGD <%= result.resale_price %></td>
+                            <td style="text-align: center;"><%= result.lease_commence_date %></td>
+                            <td><%= result.remaining_lease %></td>
+                        </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+            </center>
+        </div>
+    </body>
+</html>
